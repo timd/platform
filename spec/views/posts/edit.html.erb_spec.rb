@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "posts/edit", type: :view do
   before(:each) do
-    @post = assign(:post, Post.create!(
-      :title => "MyString",
-      :content => "MyString"
-    ))
+    @post = FactoryGirl.create(:post, title: "title", content: "content", date: Time.now)
   end
 
   it "renders the edit post form" do
