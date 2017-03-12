@@ -8,3 +8,8 @@ content_list = [
 content_list.each do |title, content|
   Post.create( title: title, content: content, date: Time.now )
 end
+
+comment = Comment.create( commenter: "Foo Bar", body: "This is an erudite comment")
+comment.post = Post.first
+Post.first.comments << comment
+

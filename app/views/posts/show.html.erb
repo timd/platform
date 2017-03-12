@@ -1,19 +1,62 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @post.date %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10"><h1><%= @post.title %></h1></div>
+  <div class="col-md-1"></div>
+</div>
+<div class="row">
+ <div class="col-md-1"></div>
+  <div class="col-md-8"><h5><%= @post.date %></h5></div>
+  <div class="col-md-1"></div>
+ </div>
+<div class="row">
+ <div class="col-md-1"></div>
+  <div class="col-md-1"><%= link_to 'Show', @post %></div>
+  <div class="col-md-1"><%= link_to 'Edit', edit_post_path(@post) %></div>
+  <div class="col-md-1"><%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %></div> 
+  <div class="col-md-1"></div>
+ </div>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10"><%= @post.content %></div>
+  <div class="col-md-1"></div>
+ </div>
+<div class="row">
+ <div class="col-md-1"></div>
+  <div class="col-md-10">&nbsp;</div>
+  <div class="col-md-1"></div>
+ </div>
+<div class="row">
+ <div class="col-md-1"></div>
+  <div class="col-md-10">Comments</div>
+  <div class="col-md-1"></div>
+</div>
+<div class="row">
+ <div class="col-md-1"></div>
+  <div class="col-md-10">&nbsp;</div>
+  <div class="col-md-1"></div>
+</div>
+<% @post.comments.each do |comment| %>
+<div class="row">
+ <div class="col-md-1"></div>
+  <div class="col-md-10">Posted by <%= comment.commenter %> on <%= comment.created_at %></div>
+  <div class="col-md-1"></div>
+</div>
+<div class="row">
+ <div class="col-md-1"></div>
+  <div class="col-md-10"><%= comment.body %></div>
+  <div class="col-md-1"></div>
+</div>
+<div class="row">
+ <div class="col-md-1"></div>
+  <div class="col-md-10">&nbsp;</div>
+  <div class="col-md-1"></div>
+</div>	
+<% end %>
+<div class="row">
+ <div class="col-md-1"></div>
+  <div class="col-md-10"><%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %></div>
+  <div class="col-md-1"></div>
+ </div>
